@@ -24,47 +24,191 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type PingMessage struct {
-	Greeting             string   `protobuf:"bytes,1,opt,name=greeting,proto3" json:"greeting,omitempty"`
+type FileRequest struct {
+	FileKey              string   `protobuf:"bytes,1,opt,name=file_key,json=fileKey,proto3" json:"file_key,omitempty"`
+	Blocks               []uint32 `protobuf:"varint,2,rep,packed,name=blocks,proto3" json:"blocks,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PingMessage) Reset()         { *m = PingMessage{} }
-func (m *PingMessage) String() string { return proto.CompactTextString(m) }
-func (*PingMessage) ProtoMessage()    {}
-func (*PingMessage) Descriptor() ([]byte, []int) {
+func (m *FileRequest) Reset()         { *m = FileRequest{} }
+func (m *FileRequest) String() string { return proto.CompactTextString(m) }
+func (*FileRequest) ProtoMessage()    {}
+func (*FileRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_00212fb1f9d3bf1c, []int{0}
 }
 
-func (m *PingMessage) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PingMessage.Unmarshal(m, b)
+func (m *FileRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FileRequest.Unmarshal(m, b)
 }
-func (m *PingMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PingMessage.Marshal(b, m, deterministic)
+func (m *FileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FileRequest.Marshal(b, m, deterministic)
 }
-func (m *PingMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PingMessage.Merge(m, src)
+func (m *FileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileRequest.Merge(m, src)
 }
-func (m *PingMessage) XXX_Size() int {
-	return xxx_messageInfo_PingMessage.Size(m)
+func (m *FileRequest) XXX_Size() int {
+	return xxx_messageInfo_FileRequest.Size(m)
 }
-func (m *PingMessage) XXX_DiscardUnknown() {
-	xxx_messageInfo_PingMessage.DiscardUnknown(m)
+func (m *FileRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FileRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_PingMessage proto.InternalMessageInfo
+var xxx_messageInfo_FileRequest proto.InternalMessageInfo
 
-func (m *PingMessage) GetGreeting() string {
+func (m *FileRequest) GetFileKey() string {
 	if m != nil {
-		return m.Greeting
+		return m.FileKey
 	}
 	return ""
 }
 
+func (m *FileRequest) GetBlocks() []uint32 {
+	if m != nil {
+		return m.Blocks
+	}
+	return nil
+}
+
+type FileRequestMessage struct {
+	Req                  []*FileRequest `protobuf:"bytes,1,rep,name=req,proto3" json:"req,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
+}
+
+func (m *FileRequestMessage) Reset()         { *m = FileRequestMessage{} }
+func (m *FileRequestMessage) String() string { return proto.CompactTextString(m) }
+func (*FileRequestMessage) ProtoMessage()    {}
+func (*FileRequestMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00212fb1f9d3bf1c, []int{1}
+}
+
+func (m *FileRequestMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FileRequestMessage.Unmarshal(m, b)
+}
+func (m *FileRequestMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FileRequestMessage.Marshal(b, m, deterministic)
+}
+func (m *FileRequestMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileRequestMessage.Merge(m, src)
+}
+func (m *FileRequestMessage) XXX_Size() int {
+	return xxx_messageInfo_FileRequestMessage.Size(m)
+}
+func (m *FileRequestMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_FileRequestMessage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FileRequestMessage proto.InternalMessageInfo
+
+func (m *FileRequestMessage) GetReq() []*FileRequest {
+	if m != nil {
+		return m.Req
+	}
+	return nil
+}
+
+type FileResponse struct {
+	FileKey              string   `protobuf:"bytes,1,opt,name=file_key,json=fileKey,proto3" json:"file_key,omitempty"`
+	Block                uint32   `protobuf:"varint,2,opt,name=block,proto3" json:"block,omitempty"`
+	Data                 []byte   `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *FileResponse) Reset()         { *m = FileResponse{} }
+func (m *FileResponse) String() string { return proto.CompactTextString(m) }
+func (*FileResponse) ProtoMessage()    {}
+func (*FileResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00212fb1f9d3bf1c, []int{2}
+}
+
+func (m *FileResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FileResponse.Unmarshal(m, b)
+}
+func (m *FileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FileResponse.Marshal(b, m, deterministic)
+}
+func (m *FileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileResponse.Merge(m, src)
+}
+func (m *FileResponse) XXX_Size() int {
+	return xxx_messageInfo_FileResponse.Size(m)
+}
+func (m *FileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_FileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FileResponse proto.InternalMessageInfo
+
+func (m *FileResponse) GetFileKey() string {
+	if m != nil {
+		return m.FileKey
+	}
+	return ""
+}
+
+func (m *FileResponse) GetBlock() uint32 {
+	if m != nil {
+		return m.Block
+	}
+	return 0
+}
+
+func (m *FileResponse) GetData() []byte {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type FileResponseMessage struct {
+	Res                  []*FileResponse `protobuf:"bytes,1,rep,name=res,proto3" json:"res,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *FileResponseMessage) Reset()         { *m = FileResponseMessage{} }
+func (m *FileResponseMessage) String() string { return proto.CompactTextString(m) }
+func (*FileResponseMessage) ProtoMessage()    {}
+func (*FileResponseMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00212fb1f9d3bf1c, []int{3}
+}
+
+func (m *FileResponseMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FileResponseMessage.Unmarshal(m, b)
+}
+func (m *FileResponseMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FileResponseMessage.Marshal(b, m, deterministic)
+}
+func (m *FileResponseMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileResponseMessage.Merge(m, src)
+}
+func (m *FileResponseMessage) XXX_Size() int {
+	return xxx_messageInfo_FileResponseMessage.Size(m)
+}
+func (m *FileResponseMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_FileResponseMessage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FileResponseMessage proto.InternalMessageInfo
+
+func (m *FileResponseMessage) GetRes() []*FileResponse {
+	if m != nil {
+		return m.Res
+	}
+	return nil
+}
+
 func init() {
-	proto.RegisterType((*PingMessage)(nil), "api.PingMessage")
+	proto.RegisterType((*FileRequest)(nil), "api.FileRequest")
+	proto.RegisterType((*FileRequestMessage)(nil), "api.FileRequestMessage")
+	proto.RegisterType((*FileResponse)(nil), "api.FileResponse")
+	proto.RegisterType((*FileResponseMessage)(nil), "api.FileResponseMessage")
 }
 
 func init() {
@@ -72,14 +216,22 @@ func init() {
 }
 
 var fileDescriptor_00212fb1f9d3bf1c = []byte{
-	// 109 bytes of a gzipped FileDescriptorProto
+	// 231 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0xe2, 0x4c, 0x2c, 0xc8, 0xd4,
-	0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x06, 0x32, 0x95, 0x34, 0xb9, 0xb8, 0x03, 0x32, 0xf3,
-	0xd2, 0x7d, 0x53, 0x8b, 0x8b, 0x13, 0xd3, 0x53, 0x85, 0xa4, 0xb8, 0x38, 0xd2, 0x8b, 0x52, 0x53,
-	0x4b, 0x80, 0x42, 0x12, 0x8c, 0x0a, 0x8c, 0x1a, 0x9c, 0x41, 0x70, 0xbe, 0x91, 0x05, 0x17, 0x0b,
-	0x48, 0xa9, 0x90, 0x01, 0x17, 0x47, 0x70, 0x62, 0xa5, 0x47, 0x6a, 0x4e, 0x4e, 0xbe, 0x90, 0x80,
-	0x1e, 0xc8, 0x3c, 0x24, 0x13, 0xa4, 0x30, 0x44, 0x94, 0x18, 0x92, 0xd8, 0xc0, 0x16, 0x1a, 0x03,
-	0x02, 0x00, 0x00, 0xff, 0xff, 0xf8, 0x4a, 0xe3, 0x1e, 0x7d, 0x00, 0x00, 0x00,
+	0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x06, 0x32, 0x95, 0x1c, 0xb8, 0xb8, 0xdd, 0x32, 0x73,
+	0x52, 0x83, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b, 0x84, 0x24, 0xb9, 0x38, 0xd2, 0x80, 0xdc, 0xf8,
+	0xec, 0xd4, 0x4a, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x76, 0x10, 0xdf, 0x3b, 0xb5, 0x52,
+	0x48, 0x8c, 0x8b, 0x2d, 0x29, 0x27, 0x3f, 0x39, 0xbb, 0x58, 0x82, 0x49, 0x81, 0x59, 0x83, 0x37,
+	0x08, 0xca, 0x53, 0xb2, 0xe0, 0x12, 0x42, 0x32, 0xc1, 0x37, 0xb5, 0xb8, 0x38, 0x31, 0x3d, 0x55,
+	0x48, 0x89, 0x8b, 0xb9, 0x28, 0xb5, 0x10, 0x68, 0x06, 0xb3, 0x06, 0xb7, 0x91, 0x80, 0x1e, 0xc8,
+	0x56, 0x24, 0x55, 0x41, 0x20, 0x49, 0xa5, 0x60, 0x2e, 0x1e, 0x88, 0x58, 0x71, 0x41, 0x7e, 0x5e,
+	0x71, 0x2a, 0x3e, 0xcb, 0x45, 0xb8, 0x58, 0xc1, 0xd6, 0x01, 0xed, 0x66, 0x04, 0xda, 0x0d, 0xe1,
+	0x08, 0x09, 0x71, 0xb1, 0xa4, 0x24, 0x96, 0x24, 0x4a, 0x30, 0x03, 0x05, 0x79, 0x82, 0xc0, 0x6c,
+	0x25, 0x2b, 0x2e, 0x61, 0x64, 0x43, 0x61, 0xee, 0x51, 0x06, 0xb9, 0xa7, 0x18, 0xea, 0x1e, 0x41,
+	0x24, 0xf7, 0x40, 0x94, 0x81, 0x1c, 0x54, 0x6c, 0xe4, 0xcc, 0xc5, 0x02, 0x12, 0x14, 0xb2, 0xe6,
+	0x62, 0x09, 0x4e, 0xcd, 0x4b, 0x11, 0x12, 0x47, 0x77, 0x37, 0xd4, 0x34, 0x29, 0x09, 0x0c, 0x03,
+	0xa0, 0x32, 0x4a, 0x0c, 0x49, 0x6c, 0xe0, 0xd0, 0x35, 0x06, 0x04, 0x00, 0x00, 0xff, 0xff, 0xcc,
+	0xda, 0xe6, 0x6a, 0x6a, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -90,72 +242,72 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// PingClient is the client API for Ping service.
+// FileClient is the client API for File service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type PingClient interface {
-	SayHello(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error)
+type FileClient interface {
+	Send(ctx context.Context, in *FileRequestMessage, opts ...grpc.CallOption) (*FileResponseMessage, error)
 }
 
-type pingClient struct {
+type fileClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewPingClient(cc grpc.ClientConnInterface) PingClient {
-	return &pingClient{cc}
+func NewFileClient(cc grpc.ClientConnInterface) FileClient {
+	return &fileClient{cc}
 }
 
-func (c *pingClient) SayHello(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error) {
-	out := new(PingMessage)
-	err := c.cc.Invoke(ctx, "/api.Ping/SayHello", in, out, opts...)
+func (c *fileClient) Send(ctx context.Context, in *FileRequestMessage, opts ...grpc.CallOption) (*FileResponseMessage, error) {
+	out := new(FileResponseMessage)
+	err := c.cc.Invoke(ctx, "/api.File/Send", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// PingServer is the server API for Ping service.
-type PingServer interface {
-	SayHello(context.Context, *PingMessage) (*PingMessage, error)
+// FileServer is the server API for File service.
+type FileServer interface {
+	Send(context.Context, *FileRequestMessage) (*FileResponseMessage, error)
 }
 
-// UnimplementedPingServer can be embedded to have forward compatible implementations.
-type UnimplementedPingServer struct {
+// UnimplementedFileServer can be embedded to have forward compatible implementations.
+type UnimplementedFileServer struct {
 }
 
-func (*UnimplementedPingServer) SayHello(ctx context.Context, req *PingMessage) (*PingMessage, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
+func (*UnimplementedFileServer) Send(ctx context.Context, req *FileRequestMessage) (*FileResponseMessage, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
 }
 
-func RegisterPingServer(s *grpc.Server, srv PingServer) {
-	s.RegisterService(&_Ping_serviceDesc, srv)
+func RegisterFileServer(s *grpc.Server, srv FileServer) {
+	s.RegisterService(&_File_serviceDesc, srv)
 }
 
-func _Ping_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PingMessage)
+func _File_Send_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FileRequestMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PingServer).SayHello(ctx, in)
+		return srv.(FileServer).Send(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.Ping/SayHello",
+		FullMethod: "/api.File/Send",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PingServer).SayHello(ctx, req.(*PingMessage))
+		return srv.(FileServer).Send(ctx, req.(*FileRequestMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Ping_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "api.Ping",
-	HandlerType: (*PingServer)(nil),
+var _File_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "api.File",
+	HandlerType: (*FileServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SayHello",
-			Handler:    _Ping_SayHello_Handler,
+			MethodName: "Send",
+			Handler:    _File_Send_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

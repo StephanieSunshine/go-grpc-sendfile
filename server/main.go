@@ -4,7 +4,7 @@ import (
   "fmt"
   "log"
   "net"
-  "github.com/StephanieSunshine/go-grpc-boilerplate/api"
+  "github.com/StephanieSunshine/go-grpc-sendfile/api"
   "google.golang.org/grpc"
 )
 
@@ -25,7 +25,7 @@ func main() {
   grpcServer := grpc.NewServer()
 
   // attach the Ping service to the server
-  api.RegisterPingServer(grpcServer, &s)
+  api.RegisterFileServer(grpcServer, &s)
 
   // start the server
   if err := grpcServer.Serve(lis); err != nil {

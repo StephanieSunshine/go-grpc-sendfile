@@ -1,10 +1,25 @@
 syntax = "proto3";
 package api;
 
-message PingMessage {
-  string greeting = 1;
+message FileRequest {
+	string file_key = 1;
+	repeated uint32 blocks = 2;
 }
 
-service Ping {
-  rpc SayHello(PingMessage) returns (PingMessage) {}
+message FileRequestMessage {
+	repeated FileRequest req = 1;
+}
+
+message FileResponse {
+	string file_key = 1;
+	uint32 block = 2;
+	bytes data = 3;
+}
+
+message FileResponseMessage {
+	repeated FileResponse res = 1;
+}
+
+service File {
+  rpc Send(FileRequestMessage) returns (FileResponseMessage) {}
 }

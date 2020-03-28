@@ -2,7 +2,7 @@ package main
 
 import (
   "log"
-  "github.com/StephanieSunshine/go-grpc-boilerplate/api"
+  "github.com/StephanieSunshine/go-grpc-sendfile/api"
   "golang.org/x/net/context"
   "google.golang.org/grpc"
 )
@@ -18,12 +18,15 @@ func main() {
 
   defer conn.Close()
 
-  c := api.NewPingClient(conn)
-  response, err := c.SayHello(context.Background(), &api.PingMessage{Greeting: "foo"})
+  c := api.NewFileClient(conn)
 
-  if err != nil {
+  _ = c
+  // response, err := c.SayHello(context.Background(), &api.PingMessage{Greeting: "foo"})
+
+  /*if err != nil {
     log.Fatalf("Error when calling SayHello: %s", err)
   }
 
   log.Printf("Response from server: %s", response.Greeting)
+  */
 }

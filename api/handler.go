@@ -10,7 +10,7 @@ type Server struct {
 }
 
 // SayHello generates response to a Ping request
-func (s *Server) SayHello(ctx context.Context, in *PingMessage) (*PingMessage, error) {
+func (s *Server) Send(ctx context.Context, in *FileRequestMessage) (*FileResponseMessage, error) {
   log.Printf("Receive message %s", in.Greeting)
-  return &PingMessage{Greeting: "bar"}, nil
+  return &FileResponseMessage{}, nil
 }
