@@ -5,6 +5,7 @@ import (
   "log"
   "net"
   "github.com/StephanieSunshine/go-grpc-sendfile/api"
+  "github.com/StephanieSunshine/go-grpc-sendfile/server/actions"
   "google.golang.org/grpc"
 )
 
@@ -19,7 +20,7 @@ func main() {
   }
 
   // create a server instance
-  s := api.Server{}
+  s := actions.Server{}
 
   // create a gRPC server object
   grpcServer := grpc.NewServer()

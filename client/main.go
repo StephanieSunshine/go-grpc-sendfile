@@ -3,7 +3,7 @@ package main
 import (
   "log"
   "github.com/StephanieSunshine/go-grpc-sendfile/api"
-  "golang.org/x/net/context"
+  _ "golang.org/x/net/context"
   "google.golang.org/grpc"
 )
 

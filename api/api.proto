@@ -3,17 +3,21 @@ package api;
 
 message FileRequest {
 	string file_key = 1;
-	repeated uint32 blocks = 2;
+	/* depending on how it is used, blocks can either be -1, 0, 1, 2, 3 for all or part 1/4, part 2/4 part 3/4, part 4/4 */
+	/* metadata will only return on -1 and 0 */
+	uint32 block = 2;
 }
 
 message FileRequestMessage {
+	/* Allows chunking of requests :) */
 	repeated FileRequest req = 1;
 }
 
 message FileResponse {
 	string file_key = 1;
 	uint32 block = 2;
-	bytes data = 3;
+	bytes  data = 3;
+	string mime_type = 4;
 }
 
 message FileResponseMessage {
